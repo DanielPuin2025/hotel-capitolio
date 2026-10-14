@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Capitolio del Llano - Iniciar Sesión</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<div class="login-wrapper">
+    <div class="login-lado-izq">
+    <img src="img/logo.png" alt="Logo Hotel Capitolio del Llano" style="max-width: 260px; margin-bottom: 1rem;">
+    <b><p class="mt-2">      __________________________________________________</p></b>
+  </div>
+  <div class="login-lado-der">
+    <div class="login-card">
+      <h4 class="mb-4 text-center">Iniciar Sesión</h4>
+      <form id="formLogin">
+              <div class="mb-3">
+          <label class="form-label">Usuario</label>
+          <input type="text" class="form-control" id="usuario" placeholder="Ingrese su usuario" required autocomplete="off">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña" required autocomplete="off">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="recordar">
+          <label class="form-check-label" for="recordar">Recordar usuario</label>
+        </div>
+        <div id="mensajeError" class="text-danger small mb-2"></div>
+        <button type="submit" class="btn btn-primary w-100" style="background: var(--azul-oscuro); border:none;">Iniciar Sesión</button>
+                  <p class="text-center mt-3"><a href="#">¿Olvidó su contraseña?</a></p>
+        <div class="text-center mt-2">
+          <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreadores">
+            <i class="bi bi-people-fill me-1"></i>CREADORES
+          </button>
+          <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modalCreditos" onclick="iniciarCreditos()">
+            <i class="bi bi-film me-1"></i>CRÉDITOS
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalCreadores" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Creadores del Sistema</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row text-center g-4">
+          <div class="col-md-4">
+            <div class="creador-foto" style="background-image: url('img/creador1.jpg');"></div>
+            <p class="mt-2 fw-semibold">Juan Pablo Bonilla Tupanteve</p>
+          </div>
+          <div class="col-md-4">
+            <div class="creador-foto" style="background-image: url('img/creador2.jpg');"></div>
+            <p class="mt-2 fw-semibold">Yojan Adrian Rincon Farias</p>
+          </div>
+          <div class="col-md-4">
+            <div class="creador-foto" style="background-image: url('img/creador3.jpg');"></div>
+            <p class="mt-2 fw-semibold">Alvaro Jesus Reyes Tabaco</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalCreditos" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content" style="background:#0f1f3d; height:80vh;">
+      <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" style="z-index:10;" data-bs-dismiss="modal"></button>
+      <div class="creditos-contenedor">
+        <div class="creditos-texto" id="creditosTexto">
+          <h2>HOTEL CAPITOLIO DEL LLANO</h2>
+          <p class="subt">Sistema Administrativo Hotelero</p>
+
+          <h4>Dirección del Proyecto</h4>
+          <p>Juan Pablo Bonilla Tupanteve</p>
+          <p>Yojan Adrian Rincon Farias</p>
+          <p>Alvaro Jesus Reyes Tabaco</p>
+
+          <h4>Desarrollo Full Stack</h4>
+          <p>Juan Pablo Bonilla Tupanteve</p>
+          <p>Yojan Adrian Rincon Farias</p>
+          <p>Alvaro Jesus Reyes Tabaco</p>
+
+          <h4>Diseño de Base de Datos</h4>
+          <p>Yojan Adrian Rincon Farias</p>
+
+          <h4>Programador</h4>
+          <p>Yojan Adrian Rincon Farias</p>
+
+          <h4>Redactor</h4>
+          <p>Juan Pablo Bonilla Tupanteve</p>
+
+          <h4>Diseño de Interfaz (UI/UX)</h4>
+          <p>Alvaro Jesus Reyes Tabaco</p>
+
+          <h4>Documentación y Manual de Usuario</h4>
+          <p>Juan Pablo Bonilla Tupanteve</p>
+
+          <h4>Dueño Y Gerente De La Empresa</h4>
+          <p>Rafael Alirio Forero Muñoz</p>
+
+          <h4>Pruebas y Control de Calidad</h4>
+          <p>Maryluz Lopez</p>
+          <p>Ledy</p>
+          <p>Rafael Alirio Forero Muñoz </p>
+
+          <h4>Tecnologías Utilizadas</h4>
+          <p>Node.js · Express.js · MySQL</p>
+          <p>HTML · CSS · JavaScript · Bootstrap</p>
+
+          <h4>Agradecimientos Especiales</h4>
+          <p>IE. Megacolegio El progreso</p>
+          <p>SENA</p>
+          <p>A Hotel Capitolio Del Llano</p>
+          <p>Ingeniero Daniel Humberto Puin</p>
+          <p>Nini Johana Salamanca Maldonado</p>
+
+          <h3 class="mt-5">GRACIAS POR USAR NUESTRO SISTEMA</h3>
+          <p class="subt">Hotel Capitolio del Llano © 2026</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

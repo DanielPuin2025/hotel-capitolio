@@ -1,0 +1,10 @@
+.git
+.github
+.vscode
+.idea
+**/node_modules
+**/.env
+**/.env.*
+backend/uploads
+base de datos_/*.sql
+**/npm-debug.log*

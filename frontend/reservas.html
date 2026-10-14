@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Reservas - Hotel Capitolio del Llano</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<div id="sidebar-placeholder"></div>
+
+<div class="contenido">
+  <div class="topbar"><h5 class="m-0">Nueva Reserva</h5></div>
+
+  <div class="row g-3">
+    <div class="col-md-5">
+      <div class="card card-resumen p-3">
+        <h6>Datos de la Reserva</h6>
+        <form id="formReserva">
+          <div class="mb-2">
+            <label class="form-label">Huésped</label>
+            <input class="form-control" id="buscarHuesped" placeholder="Buscar huésped..." autocomplete="off">
+            <input type="hidden" id="huespedId">
+            <div id="listaSugerencias" class="list-group position-absolute" style="z-index:10;"></div>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Documento (si es nuevo)</label>
+            <input class="form-control" id="documentoNuevo" placeholder="Número de documento">
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Teléfono</label>
+            <input class="form-control" id="telefonoNuevo" placeholder="Número de teléfono">
+          </div>
+          <div class="row">
+            <div class="col-6 mb-2"><label class="form-label">Entrada</label><input type="date" class="form-control" id="fechaEntrada" required></div>
+            <div class="col-6 mb-2"><label class="form-label">Salida</label><input type="date" class="form-control" id="fechaSalida" required></div>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Tipo de Habitación</label>
+            <select class="form-select" id="tipoHabitacion">
+              <option value="">Seleccione tipo</option>
+              <option>Sencilla</option><option>Doble</option><option>Triple</option><option>Suite</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Habitación</label>
+            <select class="form-select" id="habitacionId" required></select>
+          </div>
+          <div class="alert alert-info small" id="avisoDisponibles"></div>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-secondary flex-fill" onclick="document.getElementById('formReserva').reset()">Cancelar</button>
+            <button type="button" class="btn btn-primary flex-fill" style="background:var(--azul-oscuro);border:none;" onclick="confirmarReserva()">Confirmar Reserva</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="card card-resumen p-3">
+        <h6>Reservas Registradas</h6>
+        <table class="table table-sm table-hover">
+          <thead><tr><th>Huésped</th><th>Habitación</th><th>Entrada</th><th>Salida</th><th>Estado</th><th></th></tr></thead>
+          <tbody id="tablaReservas"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/reservas.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Minibar - Hotel Capitolio del Llano</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<div id="sidebar-placeholder"></div>
+
+<div class="contenido">
+  <div class="topbar">
+    <h5 class="m-0">Consumo de Minibar</h5>
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#modalProducto" onclick="abrirNuevoProducto()">
+        <i class="bi bi-box-seam me-1"></i>Registrar Producto
+      </button>
+      <button class="btn btn-primary btn-sm" style="background:var(--azul-oscuro);border:none;" data-bs-toggle="modal" data-bs-target="#modalConsumo">
+        <i class="bi bi-plus-lg me-1"></i>Nuevo Consumo
+      </button>
+    </div>
+  </div>
+
+  <div class="card card-resumen p-3 mb-3">
+    <div class="row g-2">
+      <div class="col-md-5">
+        <label class="form-label">Habitación</label>
+        <select class="form-select" id="filtroHabitacion" onchange="cargarConsumos()"><option value="">Todas</option></select>
+      </div>
+      <div class="col-md-5">
+        <label class="form-label">Fecha</label>
+        <input type="date" class="form-control" id="filtroFecha" onchange="cargarConsumos()">
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-resumen p-3 mb-3">
+    <table class="table table-hover">
+      <thead><tr><th>Producto</th><th>Cantidad</th><th>Precio Unitario</th><th>Total</th><th>Acciones</th></tr></thead>
+      <tbody id="tablaMinibar"></tbody>
+    </table>
+    <div class="text-end fw-bold mt-2">Total a cobrar: <span id="totalCobrar" class="text-success">$0</span></div>
+  </div>
+
+  <div class="card card-resumen p-3">
+    <h6>Inventario de Productos</h6>
+    <table class="table table-hover">
+      <thead><tr><th>Producto</th><th>Precio Unitario</th><th>Stock</th><th>Estado</th><th>Acciones</th></tr></thead>
+      <tbody id="tablaInventario"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal fade" id="modalConsumo" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Nuevo Consumo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <form id="formConsumo">
+          <div class="mb-2"><label class="form-label">Habitación</label><select class="form-select" id="habitacionConsumo" required></select></div>
+          <div class="mb-2">
+            <label class="form-label">Producto</label>
+            <input type="text" class="form-control" id="nombreProducto" placeholder="Escriba el nombre del producto" required list="listaProductos">
+            <datalist id="listaProductos"></datalist>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Precio Unitario</label>
+            <input type="number" class="form-control" id="precioProducto" placeholder="Precio unitario">
+            <small class="text-muted">Solo obligatorio si el producto es nuevo</small>
+          </div>
+          <div class="mb-2"><label class="form-label">Cantidad</label><input type="number" min="1" class="form-control" id="cantidadConsumo" required></div>
+          <div class="mb-2"><label class="form-label">Fecha</label><input type="date" class="form-control" id="fechaConsumo" required></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-primary" style="background:var(--azul-oscuro);border:none;" onclick="guardarConsumo()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalProducto" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title" id="tituloModalProducto">Registrar Producto</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <form id="formProducto">
+          <input type="hidden" id="productoId">
+          <div class="mb-2"><label class="form-label">Nombre del Producto</label>
+            <input type="text" class="form-control" id="nombreProductoInventario" required></div>
+          <div class="mb-2"><label class="form-label">Precio Unitario</label>
+            <input type="number" class="form-control" id="precioProductoInventario" required></div>
+          <div class="mb-2"><label class="form-label">Cantidad (Stock)</label>
+            <input type="number" min="0" class="form-control" id="stockProductoInventario" required></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-primary" style="background:var(--azul-oscuro);border:none;" onclick="guardarProductoInventario()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/minibar.js"></script>
+</body>
+</html>
