@@ -14,7 +14,7 @@ Aplicación web de administración hotelera: frontend estático y API Node.js/Ex
    - `DB_NAME`: `hotel_capitolio`.
    - `JWT_SECRET`: valor aleatorio largo, generado exclusivamente para producción.
 4. Configurar el dominio `hotelcapitolio.programamega.com` en este servicio y activar HTTPS en EasyPanel.
-5. Montar un volumen persistente en `/app/backend/uploads` para conservar las imágenes de habitaciones al reconstruir o desplegar el contenedor.
+5. Montar un volumen persistente en `/app/backend/uploads` para conservar las imágenes de habitaciones al reconstruir o desplegar el contenedor. Si se deben conservar las imágenes existentes, copiar también el contenido de `backend/uploads` al volumen; ese directorio local no se publica en Git.
 6. Usar `GET /healthz` como comprobación de salud.
 
 El `Dockerfile` construye el frontend y la API en un solo servicio. La interfaz llama a la API en el mismo dominio, por lo que no requiere una URL de API distinta.
